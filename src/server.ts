@@ -7,7 +7,6 @@ import { request } from 'undici';
 import { z } from 'zod';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
 
 // 说明：包版本未导出 @modelcontextprotocol/sdk/stdio 或 server/stdio 的类型入口
 // 因此这里用动态导入到构建产物，运行时可用；类型以 any 处理以保证兼容
@@ -168,9 +167,9 @@ async function main() {
 	const baseUrl = process.env.LOCAL_SERVICE_BASE || `http://127.0.0.1:${localPort}`;
 
 	// 自动读取 package.json 中的版本号
-	const __filename = fileURLToPath(import.meta.url);
-	const __dirname = dirname(__filename);
-	const packageJsonPath = join(__dirname, '..', 'package.json');
+	const currentFile = require.resolve('./server.js');
+	const currentDir = dirname(currentFile);
+	const packageJsonPath = join(currentDir, '..', 'package.json');
 	const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
 
 	// 创建 MCP 服务器实例（名称与版本仅用于标识）
