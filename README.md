@@ -16,13 +16,13 @@
 ### 全局安装
 
 ```bash
-npm install -g ofs-mcp-server
+npm install -g ofs-ui-mcp
 ```
 
 ### 或者直接通过 npx 运行
 
 ```bash
-npx ofs-mcp-server
+npx ofs-ui-mcp
 ```
 
 ## 使用方法
@@ -30,13 +30,13 @@ npx ofs-mcp-server
 ### 启动服务器
 
 ```bash
-ofs-mcp-server
+ofs-ui-mcp
 ```
 
 或者使用 npx：
 
 ```bash
-npx ofs-mcp-server
+npx ofs-ui-mcp
 ```
 
 ### 在支持 MCP 的环境中使用
@@ -49,10 +49,10 @@ npx ofs-mcp-server
 ```json
 {
   "mcpServers": {
-    "bingcn": {
+    "ofsui": {
       "command": "npx",
       "args": [
-        "ofs-mcp-server"
+        "ofs-ui-mcp"
       ]
     }
   }
@@ -68,7 +68,7 @@ Windows用户的配置
         "args": [
           "/c",
           "npx",
-          "ofs-mcp-server"
+          "ofs-ui-mcp"
       ]
     }
   }

@@ -13,7 +13,7 @@
 ```json
 {
   "mcpServers": {
-    "ofs-mcp-server": {
+    "ofs-ui-mcp": {
       "command": "npx",
       "args": ["node", "dist/server.js"],
       "env": {
@@ -31,7 +31,7 @@
 ```json
 {
   "bin": {
-    "ofs-mcp-server": "dist/server.js"
+    "ofs-ui-mcp": "dist/server.js"
   },
   "scripts": {
     "postinstall": "chmod +x dist/server.js"
@@ -60,7 +60,7 @@ chmod +x dist/server.js
 
 #### 3. 测试本地运行
 ```bash
-npx ofs-mcp-server
+npx ofs-ui-mcp
 ```
 
 #### 4. 发布到魔塔社区

@@ -50,7 +50,7 @@ chmod +x dist/server.cjs
 ```json
 {
   "mcpServers": {
-    "ofs-mcp-server": {
+    "ofs-ui-mcp": {
       "command": "npx",
       "args": ["node", "dist/server.js"],
       "env": {
@@ -66,7 +66,7 @@ chmod +x dist/server.cjs
 ```json
 {
   "mcpServers": {
-    "ofs-mcp-server": {
+    "ofs-ui-mcp": {
       "command": "npx",
       "args": ["node", "./dist/server.js"],
       "cwd": "/path/to/your/mcp/project",
@@ -83,7 +83,7 @@ chmod +x dist/server.cjs
 ```json
 {
   "mcpServers": {
-    "ofs-mcp-server": {
+    "ofs-ui-mcp": {
       "command": "npx",
       "args": ["node", "dist/server.cjs"],
       "env": {
@@ -131,7 +131,7 @@ npx node dist/server.js
 ```json
 {
   "mcpServers": {
-    "ofs-mcp-server": {
+    "ofs-ui-mcp": {
       "command": "npx",
       "args": ["node", "dist/server.js"]
     }
@@ -164,7 +164,7 @@ lsof -i :36666
 ```json
 {
   "mcpServers": {
-    "ofs-mcp-server": {
+    "ofs-ui-mcp": {
       "command": "npx",
       "args": ["node", "dist/server.js"],
       "env": {

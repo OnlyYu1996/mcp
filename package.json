@@ -1,11 +1,11 @@
 {
-  "name": "ofs-mcp-server",
+  "name": "ofs-ui-mcp",
   "version": "1.0.1",
   "description": "MCP 服务器，提供中文必应搜索结果抓取和网页内容抓取功能，支持中文搜索",
   "main": "build/index.js",
   "type": "module",
   "bin": {
-    "ofs-mcp-server": "./build/index.js"
+    "ofs-ui-mcp": "./build/index.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -40,12 +40,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yan5236/ofs-mcp-server-server"
+    "url": "https://github.com/yan5236/ofs-ui-mcp-server"
   },
   "bugs": {
-    "url": "https://github.com/yan5236/ofs-mcp-server-server/issues"
+    "url": "https://github.com/yan5236/ofs-ui-mcp-server/issues"
   },
-  "homepage": "https://github.com/yan5236/ofs-mcp-server-server#readme",
+  "homepage": "https://github.com/yan5236/ofs-ui-mcp-server#readme",
   "engines": {
     "node": ">=16.0.0"
   }

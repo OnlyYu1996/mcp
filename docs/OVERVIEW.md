@@ -1,8 +1,8 @@
-# ofs-mcp-server 概述
+# ofs-ui-mcp 概述
 
 ## 功能描述
 
-`ofs-mcp-server` 是一个 Model Context Protocol (MCP) 服务器，专门用于向 AI 客户端提供 ofs-ui 组件信息。它通过连接 VSCode 插件的本地服务端来获取组件数据，并提供智能的数据处理和缓存功能。
+`ofs-ui-mcp` 是一个 Model Context Protocol (MCP) 服务器，专门用于向 AI 客户端提供 ofs-ui 组件信息。它通过连接 VSCode 插件的本地服务端来获取组件数据，并提供智能的数据处理和缓存功能。
 
 ## 核心特性
 

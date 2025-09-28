@@ -1,4 +1,4 @@
-# ofs-mcp-server 部署指南
+# ofs-ui-mcp 部署指南
 
 ## 魔塔社区托管部署配置
 
@@ -61,7 +61,7 @@ pnpm run docker:compose:down
 ```json
 {
   "mcpServers": {
-    "ofs-mcp-server": {
+    "ofs-ui-mcp": {
       "command": "node",
       "args": ["dist/server.js"],
       "env": {
@@ -106,10 +106,10 @@ pnpm run docker:compose:down
 #### 日志查看
 ```bash
 # Docker 容器日志
-docker logs ofs-mcp-server
+docker logs ofs-ui-mcp
 
 # Docker Compose 日志
-docker-compose logs ofs-mcp-server
+docker-compose logs ofs-ui-mcp
 ```
 
 ### 8. 性能优化

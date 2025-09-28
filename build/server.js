@@ -80,15 +80,15 @@ async function main() {
     try {
         const { StdioServerTransport } = require('@modelcontextprotocol/sdk/server/stdio.js');
         await server.connect(new StdioServerTransport());
-        console.log(`[ofs-mcp-server] started via stdio, local service: ${baseUrl}`);
+        console.log(`[ofs-ui-mcp] started via stdio, local service: ${baseUrl}`);
     }
     catch (error) {
-        console.error('[ofs-mcp-server] Failed to start stdio transport:', error);
+        console.error('[ofs-ui-mcp] Failed to start stdio transport:', error);
         process.exit(1);
     }
 }
 main().catch((err) => {
     // eslint-disable-next-line no-console
-    console.error('[ofs-mcp-server] fatal error', err);
+    console.error('[ofs-ui-mcp] fatal error', err);
     process.exit(1);
 });

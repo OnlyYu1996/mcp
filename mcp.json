@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "ofs-mcp-server": {
+    "ofs-ui-mcp": {
       "command": "npx",
       "args": ["-y", "node", "build/index.js"],
       "env": {
