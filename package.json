@@ -25,18 +25,14 @@
   },
   "main": "dist/server.js",
   "bin": {
-    "ofs-mcp-server": "dist/server.js"
+    "ofs-mcp-server": "./dist/server.js"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "npx tsc",
     "start": "node dist/server.js",
     "postinstall": "chmod +x dist/server.js",
     "dev": "tsx src/server.ts",
-    "lint": "eslint src --ext .ts",
-    "docker:build": "docker build -t ofs-mcp-server .",
-    "docker:run": "docker run -p 3000:3000 ofs-mcp-server",
-    "docker:compose": "docker-compose up -d",
-    "docker:compose:down": "docker-compose down"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.4",
