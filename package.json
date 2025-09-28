@@ -2,7 +2,7 @@
   "name": "ofs-mcp-server",
   "version": "0.1.0",
   "private": false,
-  "type": "module",
+  "type": "commonjs",
   "license": "MIT",
   "description": "MCP server that exposes ofs-ui component metadata to AI tools",
   "keywords": [
@@ -28,7 +28,7 @@
     "ofs-mcp-server": "./dist/server.js"
   },
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
     "postinstall": "chmod +x dist/server.js",
     "dev": "tsx src/server.ts",
