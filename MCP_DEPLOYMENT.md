@@ -8,14 +8,14 @@
 ### 解决方案
 
 #### 1. 使用 npx 命令
-将启动命令从 `node` 改为 `npx`：
+将启动命令从 `node` 改为 `npx`，但参数需要明确指定：
 
 ```json
 {
   "mcpServers": {
     "ofs-mcp-server": {
       "command": "npx",
-      "args": ["ofs-mcp-server"],
+      "args": ["node", "dist/server.js"],
       "env": {
         "LOCAL_SERVICE_PORT": "36666",
         "LOCAL_SERVICE_BASE": "http://127.0.0.1:36666"
@@ -69,11 +69,12 @@ npx ofs-mcp-server
 ### 支持的启动命令格式
 
 魔塔社区支持以下命令格式：
-- ✅ `npx package-name`
+- ✅ `npx node script.js` (通过 npx 调用 node)
 - ✅ `python -m module`
 - ✅ `uv run script`
 - ✅ `uvx package`
 - ❌ `node script.js` (不支持)
+- ❌ `npx package-name` (不支持包名方式)
 
 ### 验证部署
 
