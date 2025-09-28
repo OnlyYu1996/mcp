@@ -1,50 +1,12 @@
 #!/usr/bin/env node
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const mcp_js_1 = require("@modelcontextprotocol/sdk/server/mcp.js");
-const stdio_js_1 = require("@modelcontextprotocol/sdk/server/stdio.js");
-const zod_1 = require("zod");
-const axios_1 = __importDefault(require("axios"));
-const cheerio = __importStar(require("cheerio"));
-const dotenv_1 = __importDefault(require("dotenv"));
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+import axios from "axios";
+import * as cheerio from "cheerio";
+import dotenv from "dotenv";
 // 加载环境变量
-dotenv_1.default.config();
+dotenv.config();
 // 配置默认用户代理
 const USER_AGENT = process.env.USER_AGENT || "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 // 全局变量存储搜索结果，这样可以通过ID引用
@@ -75,7 +37,7 @@ async function searchBing(query, numResults) {
             'Cookie': 'SRCHHPGUSR=SRCHLANG=zh-Hans; _EDGE_S=ui=zh-cn; _EDGE_V=1'
         };
         // 发送请求
-        const response = await axios_1.default.get(searchUrl, {
+        const response = await axios.get(searchUrl, {
             headers,
             timeout: 15000 // 增加超时时间
         });
@@ -225,7 +187,7 @@ async function searchBing(query, numResults) {
     }
     catch (error) {
         console.error('必应搜索出错:', error);
-        if (axios_1.default.isAxiosError(error)) {
+        if (axios.isAxiosError(error)) {
             console.error(`HTTP错误状态码: ${error.response?.status}`);
             console.error(`错误响应数据: ${JSON.stringify(error.response?.data || '无数据')}`);
         }
@@ -265,7 +227,7 @@ async function fetchWebpageContent(resultId) {
             'Referer': 'https://cn.bing.com/'
         };
         // 发送请求获取网页内容
-        const response = await axios_1.default.get(url, {
+        const response = await axios.get(url, {
             headers,
             timeout: 15000,
             responseType: 'arraybuffer' // 使用arraybuffer以便正确处理各种编码
@@ -352,7 +314,7 @@ async function fetchWebpageContent(resultId) {
     }
     catch (error) {
         console.error('获取网页内容出错:', error);
-        if (axios_1.default.isAxiosError(error)) {
+        if (axios.isAxiosError(error)) {
             console.error(`HTTP错误状态码: ${error.response?.status}`);
             console.error(`错误响应数据: ${error.response?.headers['content-type']}`);
         }
@@ -360,7 +322,7 @@ async function fetchWebpageContent(resultId) {
     }
 }
 // 创建 MCP 服务器实例
-const server = new mcp_js_1.McpServer({
+const server = new McpServer({
     name: "bing-search",
     version: "1.0.0",
     capabilities: {
@@ -370,8 +332,8 @@ const server = new mcp_js_1.McpServer({
 });
 // 注册必应搜索工具
 server.tool("bing_search", "使用必应搜索指定的关键词，并返回搜索结果列表，包括标题、链接、摘要和ID", {
-    query: zod_1.z.string().describe("搜索关键词"),
-    num_results: zod_1.z.number().default(5).describe("返回的结果数量，默认为5")
+    query: z.string().describe("搜索关键词"),
+    num_results: z.number().default(5).describe("返回的结果数量，默认为5")
 }, async ({ query, num_results }) => {
     try {
         // 调用必应搜索
@@ -399,7 +361,7 @@ server.tool("bing_search", "使用必应搜索指定的关键词，并返回搜�
 });
 // 注册网页内容抓取工具
 server.tool("fetch_webpage", "根据提供的ID获取对应网页的内容", {
-    result_id: zod_1.z.string().describe("从bing_search返回的结果ID")
+    result_id: z.string().describe("从bing_search返回的结果ID")
 }, async ({ result_id }) => {
     try {
         // 获取网页内容
@@ -428,7 +390,7 @@ server.tool("fetch_webpage", "根据提供的ID获取对应网页的内容", {
 // 运行服务器
 async function main() {
     try {
-        const transport = new stdio_js_1.StdioServerTransport();
+        const transport = new StdioServerTransport();
         await server.connect(transport);
         console.error("必应搜索 MCP 服务器已启动");
     }
