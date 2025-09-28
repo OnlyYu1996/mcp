@@ -1,4 +1,5 @@
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
 async function main() {
 	const server = new McpServer({ name: 'ofs-mcp-server', version: '0.0.0' })
@@ -17,7 +18,6 @@ async function main() {
 		}
 	)
 
-	const { StdioServerTransport } = require('@modelcontextprotocol/sdk/server/stdio.js')
 	await server.connect(new StdioServerTransport())
 	// eslint-disable-next-line no-console
 	console.log('[ofs-mcp-server] minimal started')

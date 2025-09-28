@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mcp_js_1 = require("@modelcontextprotocol/sdk/server/mcp.js");
+const stdio_js_1 = require("@modelcontextprotocol/sdk/server/stdio.js");
 async function main() {
     const server = new mcp_js_1.McpServer({ name: 'ofs-mcp-server', version: '0.0.0' });
     server.registerTool('ping', {
@@ -12,8 +13,7 @@ async function main() {
             content: [{ type: 'text', text: 'pong' }]
         };
     });
-    const { StdioServerTransport } = require('@modelcontextprotocol/sdk/server/stdio.js');
-    await server.connect(new StdioServerTransport());
+    await server.connect(new stdio_js_1.StdioServerTransport());
     // eslint-disable-next-line no-console
     console.log('[ofs-mcp-server] minimal started');
 }
