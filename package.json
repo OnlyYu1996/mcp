@@ -23,14 +23,14 @@
   "bugs": {
     "url": "https://github.com/your-org/ofs-code-helper/issues"
   },
-  "main": "dist/server.js",
+  "main": "dist/minimal.js",
   "bin": {
     "ofs-mcp-server": "./dist/server.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/server.js",
-    "postinstall": "chmod +x dist/server.js",
+    "start": "node dist/minimal.js",
+    "postinstall": "chmod +x dist/minimal.js",
     "dev": "tsx src/server.ts",
     "prepublishOnly": "npm run build"
   },
