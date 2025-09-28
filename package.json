@@ -5,12 +5,38 @@
   "type": "module",
   "license": "MIT",
   "description": "MCP server that exposes ofs-ui component metadata to AI tools",
+  "keywords": [
+    "mcp",
+    "ofs-ui",
+    "vscode",
+    "component",
+    "metadata",
+    "ai"
+  ],
+  "author": "ofs-team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/ofs-code-helper.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://github.com/your-org/ofs-code-helper/tree/main/packages/mcp",
+  "bugs": {
+    "url": "https://github.com/your-org/ofs-code-helper/issues"
+  },
   "main": "dist/server.js",
+  "bin": {
+    "ofs-mcp-server": "dist/server.js"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
+    "postinstall": "chmod +x dist/server.js",
     "dev": "tsx src/server.ts",
-    "lint": "eslint src --ext .ts"
+    "lint": "eslint src --ext .ts",
+    "docker:build": "docker build -t ofs-mcp-server .",
+    "docker:run": "docker run -p 3000:3000 ofs-mcp-server",
+    "docker:compose": "docker-compose up -d",
+    "docker:compose:down": "docker-compose down"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.4",

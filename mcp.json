@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ofs-mcp-server": {
+      "command": "npx",
+      "args": ["ofs-mcp-server"],
+      "env": {
+        "LOCAL_SERVICE_PORT": "36666",
+        "LOCAL_SERVICE_BASE": "http://127.0.0.1:36666"
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // MCP 服务器：向 AI 客户端暴露 ofs-ui 组件信息（通过 VSCode 插件本地服务端拉取）
 // - 传输层：使用 SDK 的 stdio 传输（当前版本未导出顶层路径，采用动态导入指向实际产物）
 // - 协议实现：使用 McpServer.registerTool 方法，符合当前 SDK 版本 API
