@@ -16,13 +16,13 @@
 ### 全局安装
 
 ```bash
-npm install -g bing-cn-mcp
+npm install -g ofs-mcp-server
 ```
 
 ### 或者直接通过 npx 运行
 
 ```bash
-npx bing-cn-mcp
+npx ofs-mcp-server
 ```
 
 ## 使用方法
@@ -30,13 +30,13 @@ npx bing-cn-mcp
 ### 启动服务器
 
 ```bash
-bing-cn-mcp
+ofs-mcp-server
 ```
 
 或者使用 npx：
 
 ```bash
-npx bing-cn-mcp
+npx ofs-mcp-server
 ```
 
 ### 在支持 MCP 的环境中使用
@@ -52,7 +52,7 @@ npx bing-cn-mcp
     "bingcn": {
       "command": "npx",
       "args": [
-        "bing-cn-mcp"
+        "ofs-mcp-server"
       ]
     }
   }
@@ -68,7 +68,7 @@ Windows用户的配置
         "args": [
           "/c",
           "npx",
-          "bing-cn-mcp"
+          "ofs-mcp-server"
       ]
     }
   }
