@@ -5,11 +5,11 @@
   "main": "build/index.js",
   "type": "module",
   "bin": {
-    "ofs-mcp-server": "./build/minimal.js"
+    "ofs-mcp-server": "./build/index.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node build/minimal.js",
+    "start": "node build/index.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
